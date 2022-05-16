@@ -1,2 +1,2 @@
 # DevFreela
-Projeto em .NET de cadastro de serviços de freelance de desenvolvedores
+Projeto desenvolvido durante o curso Formação ASP.NET Core, ministrado pelo instrutor Luis Felipe do Método .NET Direto ao Ponto.
