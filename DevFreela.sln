@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevFreela.API", "DevFreela.API\DevFreela.API.csproj", "{2C440D78-BAA2-4799-A11F-85BC6F35AF11}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevFreela.Core", "DevFreela.Core\DevFreela.Core.csproj", "{C5C4EC31-C457-45EC-BEFC-B0CC931E201E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevFreela.Infrastructure", "DevFreela.Infrastructure\DevFreela.Infrastructure.csproj", "{6D160CB9-25B2-4F66-BF41-49C9A51E45B9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +22,13 @@ Global
 		{2C440D78-BAA2-4799-A11F-85BC6F35AF11}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C440D78-BAA2-4799-A11F-85BC6F35AF11}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2C440D78-BAA2-4799-A11F-85BC6F35AF11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5C4EC31-C457-45EC-BEFC-B0CC931E201E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5C4EC31-C457-45EC-BEFC-B0CC931E201E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5C4EC31-C457-45EC-BEFC-B0CC931E201E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5C4EC31-C457-45EC-BEFC-B0CC931E201E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D160CB9-25B2-4F66-BF41-49C9A51E45B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D160CB9-25B2-4F66-BF41-49C9A51E45B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D160CB9-25B2-4F66-BF41-49C9A51E45B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D160CB9-25B2-4F66-BF41-49C9A51E45B9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
