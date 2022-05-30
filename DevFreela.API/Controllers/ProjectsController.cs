@@ -1,4 +1,6 @@
 using DevFreela.API.Models;
+using DevFreela.Application.InputModels;
+using DevFreela.Application.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 
@@ -7,46 +9,56 @@ namespace DevFreela.API.Controllers
     [Route("api/projects")]
     public class ProjectsController : ControllerBase
     {
-        private readonly OpeningTimeOption _option;
+        private readonly IProjectService _projectService;
 
-        public ProjectsController(IOptions<OpeningTimeOption> option)
+        public ProjectsController(IProjectService projectService)
         {
-            _option = option.Value;
+            _projectService = projectService;
         }
 
         [HttpGet]
         public IActionResult Get(string query)
         {
-            return Ok();
+            var projects = _projectService.GetAll(query);
+
+            return Ok(projects);
         }
 
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
-            // if invalid object
-            // return NotFound();
+            var project = _projectService.GetById(id);
 
-            return Ok();
+            if (project == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(project);
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody] CreateProjectModel createProject)
+        public IActionResult Post([FromBody] NewProjectInputModel inputModel)
         {
-            // if invalid object
-            // return BadRequest();
+            if (inputModel.Title.Length > 50)
+            {
+                return BadRequest();
+            }
 
-            // Create object
+            var id = _projectService.Create(inputModel);
 
-            return CreatedAtAction(nameof(GetById), new { id = createProject.Id }, createProject);
+            return CreatedAtAction(nameof(GetById), new { id = id }, inputModel);
         }
 
         [HttpPut("{id}")]
-        public IActionResult Put(int id, UpdateProjectModel updateProject)
+        public IActionResult Put(int id, [FromBody] UpdateProjectInputModel inputModel)
         {
-            // if invalid object
-            // return BadRequest();
+            if (inputModel.Description.Length > 200)
+            {
+                return BadRequest();
+            }
 
-            // Update object
+            _projectService.Update(inputModel);
 
             return NoContent();
         }
@@ -57,26 +69,32 @@ namespace DevFreela.API.Controllers
             // if object not found
             // return NotFound();
 
-            // Delete object
+            _projectService.Delete(id);
 
             return NoContent();
         }
 
         [HttpPost("{id}/comments")]
-        public IActionResult PostComment(int id, [FromBody] CreateCommentModel createComment)
+        public IActionResult PostComment(int id, [FromBody] CreateCommentInputModel inputModel)
         {
+            _projectService.CreateComment(inputModel);
+
             return NoContent();
         }
 
         [HttpPut("{id}/start")]
         public IActionResult Start(int id)
         {
+            _projectService.Start(id);
+
             return NoContent();
         }
 
         [HttpPut("{id}/finish")]
         public IActionResult Finish(int id)
         {
+            _projectService.Finish(id);
+
             return NoContent();
         }
     }
